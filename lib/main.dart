@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Activity/SMS/SMS.dart';
 import "Activity/Calls/CallLog.dart";
+import "Activity/InstalledApps/InstalledApp.dart";
 void main() {
   runApp(const MyApp());
 }
@@ -38,7 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
   // add screens over here.
   final screens = [
     SMS(),
-    CallLog()
+    CallLog(),
+    InstalledApps()
   ];
 
   @override
@@ -60,9 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
           destinations: [
             NavigationDestination(icon: Icon(Icons.sms_rounded), label: 'SMS'),
             NavigationDestination(icon: Icon(Icons.call), label: 'Calls'),
+            NavigationDestination(icon: Icon(Icons.install_mobile_sharp), label: 'Apps'),
             NavigationDestination(icon: Icon(Icons.contacts), label: 'Contacts'),
             NavigationDestination(icon: Icon(Icons.location_on), label: 'Location'),
-            NavigationDestination(icon: Icon(Icons.install_mobile_sharp), label: 'Apps'),
           ],
         ),
       ),

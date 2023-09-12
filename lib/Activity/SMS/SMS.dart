@@ -1,7 +1,6 @@
 import 'dart:convert'; // to convert api response into json response
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http; // to make http requests
-import 'package:flutter/cupertino.dart';
 import "./Card.dart";
 
 class SMS extends StatefulWidget {
@@ -18,24 +17,28 @@ class _SMSState extends State<SMS> {
 
   // api call
   void getSMS() async {
-    var client = http.Client();
-    var uri = Uri.parse("https://rat-optimized.onrender.com/sms/123");
-    var res = await client.get(uri);
-    var jsonResponse = jsonDecode(res.body);
-    // print(jsonResponse); // api json response
-    // print(res.statusCode); // respose code
-    if (res.statusCode == 200 && !jsonResponse.containsKey('error')) {
-      setState(() {
-        isLoaded = true;
-        json = jsonResponse;
-        sms_list = jsonResponse['sms']?['inbox'];
-      });
-    } else {
-      setState(() {
-        isLoaded = true;
-        json = jsonResponse;
-        sms_list = [];
-      });
+    try {
+      var client = http.Client();
+      var uri = Uri.parse("https://rat-optimized.onrender.com/sms/123");
+      var res = await client.get(uri);
+      var jsonResponse = jsonDecode(res.body);
+      // print(jsonResponse.toString()); // api json response
+      // print(res.statusCode); // response code
+      if (res.statusCode == 200 && !jsonResponse.containsKey('error')) {
+        setState(() {
+          isLoaded = true;
+          json = jsonResponse;
+          sms_list = jsonResponse['sms']?['inbox'];
+        });
+      } else {
+        setState(() {
+          isLoaded = true;
+          json = jsonResponse;
+          sms_list = [];
+        });
+      }
+    } catch(error) {
+      print(error);
     }
   }
 
