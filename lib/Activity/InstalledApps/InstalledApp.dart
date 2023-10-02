@@ -77,7 +77,7 @@ Widget _getBody(jsonResponse, installedApps) {
     );
   } else if (installedApps.isEmpty) {
     return Center(
-      child: Text("No messages", style: TextStyle(fontSize: 20)),
+      child: Text("No Installed apps", style: TextStyle(fontSize: 20)),
     );
   } else {
     return ListView.builder(
