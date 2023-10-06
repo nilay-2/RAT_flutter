@@ -38,7 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
 
   // add screens over here.
+
   final screens = [SMS(), CallLog(), InstalledApps(), Contacts(), Contacts()];
+
 
   @override
   Widget build(BuildContext context) {

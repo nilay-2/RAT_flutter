@@ -75,7 +75,7 @@ Widget _getBody(jsonResponse, call_logs) {
     );
   } else if (call_logs.isEmpty) {
     return Center(
-      child: Text("No messages", style: TextStyle(fontSize: 20)),
+      child: Text("No Calls", style: TextStyle(fontSize: 20)),
     );
   } else {
     return ListView.builder(
