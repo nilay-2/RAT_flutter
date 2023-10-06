@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'Activity/SMS/SMS.dart';
 import "Activity/Calls/CallLog.dart";
 import "Activity/InstalledApps/InstalledApp.dart";
-import 'Activity/SharedPref.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -42,7 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
     SMS(),
     CallLog(),
     InstalledApps(),
-    SharedPref()
   ];
 
   @override
