@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import 'package:http/http.dart' as http; // to make http requests
 import 'dart:convert'; // to convert api response into json response
 import "./Card.dart";
+import "../../Components/Appbar.dart";
+import "../../Components/Drawer.dart";
 class InstalledApps extends StatefulWidget {
   const InstalledApps({super.key});
 
@@ -48,16 +50,7 @@ class _InstalledAppsState extends State<InstalledApps> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.grey[850],
-        toolbarHeight: 50,
-        title: Center(
-          child: Text(
-            "Installed apps ${installedApps != null && installedApps!.length > 0 ? "(${installedApps?.length})" : ''}",
-            style: TextStyle(color: Colors.white), // Your page content
-          ),
-        ),
-      ),
+      appBar: CustomAppbar(title: "Installed Apps", contentList: installedApps,),
       body: Visibility(
           visible: isLoaded,
           replacement: Center(
@@ -65,6 +58,7 @@ class _InstalledAppsState extends State<InstalledApps> {
           ),
           child: _getBody(json, installedApps)
       ),
+      drawer: CustomDrawer(),
     );
   }
 }

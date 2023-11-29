@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert'; // to convert api response into json response
 import 'package:http/http.dart' as http;
 import './Card.dart';
+import "../../Components/Appbar.dart";
+import "../../Components/Drawer.dart";
 class CallLog extends StatefulWidget {
   const CallLog({super.key});
 
@@ -47,16 +49,7 @@ class _CallLogState extends State<CallLog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.grey[850],
-        toolbarHeight: 50,
-        title: Center(
-          child: Text(
-            "Call Log",
-            style: TextStyle(color: Colors.white), // Your page content
-          ),
-        ),
-      ),
+      appBar: CustomAppbar(title: 'Call Log', contentList: [],),
       body: Visibility(
           visible: isLoaded,
           replacement: Center(
@@ -64,6 +57,7 @@ class _CallLogState extends State<CallLog> {
           ),
           child: _getBody(json, call_log)
       ),
+      drawer: CustomDrawer(),
     );
   }
 }

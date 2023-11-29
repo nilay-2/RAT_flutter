@@ -2,7 +2,8 @@ import 'dart:convert'; // to convert api response into json response
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http; // to make http requests
 import "./Card.dart";
-
+import "../../Components/Appbar.dart";
+import "../../Components/Drawer.dart";
 class SMS extends StatefulWidget {
   const SMS({super.key});
 
@@ -51,16 +52,8 @@ class _SMSState extends State<SMS> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.grey[850],
-        toolbarHeight: 50,
-        title: Center(
-          child: Text(
-            "Messages ${sms_list != null && sms_list!.length > 0 ? "(${sms_list?.length})" : ''}",
-            style: TextStyle(color: Colors.white), // Your page content
-          ),
-        ),
-      ),
+        key: GlobalKey<ScaffoldState>(),
+      appBar: CustomAppbar(title: "Messages", contentList: sms_list),
       body: Visibility(
           visible: isLoaded,
           replacement: Center(
@@ -68,6 +61,7 @@ class _SMSState extends State<SMS> {
           ),
           child: _getBody(json, sms_list)
       ),
+      drawer: CustomDrawer(),
     );
   }
 }
@@ -94,3 +88,4 @@ Widget _getBody(jsonResponse, sms_list) {
     );
   }
 }
+
